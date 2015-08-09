@@ -1,6 +1,8 @@
 package com.tcandjl.game.Mobile;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
  * Created by TonyC on 8/7/2015.
@@ -8,13 +10,15 @@ import com.badlogic.gdx.graphics.Texture;
 public class Armor extends Mobile {
 
     public Armor() {
-        this.setHealth(1100);
-        this.setDefense(20);
-        this.setMobility(10);
-        this.setDelay(0);
-        this.setPositionX(0);
-        this.setPositionY(0);
-        this.setModel(new Texture("armor.png"));
+        super(1100, 20, 10);
+        Texture armorTexture = new Texture("armor.png");
+        this.setModel(armorTexture);
+        this.setBounds(this.getPositionX(), this.getPositionY(), armorTexture.getWidth(), armorTexture.getHeight());
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(this.getModel(), this.getX(), this.getY());
     }
 
     @Override

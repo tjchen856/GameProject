@@ -79,10 +79,12 @@ public class ProjectFrontline extends ApplicationAdapter implements InputProcess
 
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode == Keys.LEFT) {
+		if(keycode == Keys.LEFT && armor.isFacingRight()) {
+			armor.setIsFacingRight(false);
 			armor.getModel().flip(true, false);
 		}
-		if(keycode == Keys.RIGHT) {
+		if(keycode == Keys.RIGHT && !armor.isFacingRight()) {
+			armor.setIsFacingRight(true);
 			armor.getModel().flip(true, false);
 		}
 		return true;

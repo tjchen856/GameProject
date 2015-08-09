@@ -8,12 +8,43 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  * Created by TonyC on 8/7/2015.
  */
 public abstract class Mobile extends Actor {
+
+    private Sprite model;
     private int health;
     private int defense;
     private int mobility;
     private int delay;
     private float positionX, positionY;
-    private Sprite model;
+    private boolean isFacingRight;
+
+    public Mobile() {
+        this.model = new Sprite(new Texture("armor.png"));
+        this.health = 1000;
+        this.defense = 10;
+        this.mobility = 5;
+        this.delay = 500;
+        this.positionX = 0;
+        this.positionY = 0;
+        this.isFacingRight = false;
+    }
+
+    public Mobile(int health, int defense, int mobility) {
+        this.health = health;
+        this.defense = defense;
+        this.mobility = mobility;
+        this.delay = 500;
+        this.positionX = 0;
+        this.positionY = 0;
+        this.isFacingRight = false;
+    }
+
+    public Sprite getModel() {
+        return model;
+    }
+
+    public void setModel(Texture model) {
+        this.model = new Sprite(model);
+    }
 
     public int getHealth() {
         return health;
@@ -63,12 +94,12 @@ public abstract class Mobile extends Actor {
         this.positionY = positionY;
     }
 
-    public Sprite getModel() {
-        return model;
+    public boolean isFacingRight() {
+        return isFacingRight;
     }
 
-    public void setModel(Texture model) {
-        this.model = new Sprite(model);
+    public void setIsFacingRight(boolean isFacingRight) {
+        this.isFacingRight = isFacingRight;
     }
 
     public abstract void fireProjectile();
